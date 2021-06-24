@@ -1,0 +1,131 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+html,
+body {
+  // color: $black;
+  padding: 0;
+  margin: 0;
+  // font-size: 18px !important;
+  // line-height: 1.5 !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text {
+  &--left {
+    text-align: left;
+  }
+  &--center {
+    text-align: center;
+  }
+  &--right {
+    text-align: right;
+  }
+
+  &--uppercase {
+    text-transform: uppercase;
+  }
+  &--capitalize {
+    text-transform: capitalize;
+  }
+
+  &--bold {
+    font-weight: 500;
+  }
+
+  &--underline {
+    text-decoration: underline !important;
+  }
+}
+
+.flex {
+  display: flex;
+
+  &--desktop {
+    @include breakpoint-down(lg) {
+      display: block;
+    }
+  }
+
+  &--mobile {
+    @include breakpoint-up(lg) {
+      display: block;
+    }
+  }
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
+
+  &--align-stretch {
+    align-items: stretch;
+  }
+  &--align-start {
+    align-items: flex-start;
+  }
+  &--align-end {
+    align-items: flex-end;
+  }
+  &--align-center {
+    align-items: center;
+  }
+
+  &--justify-center {
+    justify-content: center;
+  }
+  &--justify-start {
+    justify-content: flex-start;
+  }
+  &--justify-end {
+    justify-content: flex-end;
+  }
+  &--justify-space-between {
+    justify-content: space-between;
+  }
+  &--justify-space-around {
+    justify-content: space-around;
+  }
+}
+
+.cursor {
+  &--pointer {
+    cursor: pointer;
+  }
+}
+
+.component {
+  &--desktop-visible {
+    @include breakpoint-down(lg) {
+      display: none;
+    }
+  }
+  &--mobile-visible {
+    @include breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}

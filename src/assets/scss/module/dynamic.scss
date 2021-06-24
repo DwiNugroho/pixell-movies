@@ -1,0 +1,35 @@
+// width from 0% - 100%
+
+.width {
+  @for $i from 0 through 20 {
+    $size: 5 * $i;
+    &--#{$size} {
+      width: $size * 1%;
+    }
+  }
+  // &-desktop {
+  //   @include breakpoint-up(lg) {
+  //     @for $i from 0 through 20 {
+  //       $size: 5 * $i;
+  //       &--#{$size} {
+  //         width: $size * 1%;
+  //       }
+  //     }
+  //   }
+  // }
+  // &-mobile {
+  //   @include breakpoint-down(lg) {
+  //     @for $i from 0 through 20 {
+  //       $size: 5 * $i;
+  //       &--#{$size} {
+  //         width: $size * 1%;
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+// create class for text color and background color
+
+@include create-class-by-color('text', 'color');
+@include create-class-by-color('background', 'background-color');
