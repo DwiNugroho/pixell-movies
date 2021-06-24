@@ -1,0 +1,51 @@
+$dark-red: #9e5551;
+$red: #e16259;
+$light-red: #ffd2d7;
+$lighter-red: #fdf5f2;
+
+$dark-blue: #406b85;
+$blue: #2eaadc;
+$light-blue: #abddf1;
+$lighter-blue: #eaf7fc;
+
+$dark-yellow: #a78001;
+$yellow: #dfab01;
+$light-yellow: #efd580;
+$lighter-yellow: #fbf4df;
+
+$black: #121212;
+$light-black: #40403f;
+$lighter-black: #666665;
+
+$gray: #999897;
+$quill-gray: #e4e4e3;
+$white: #fffefc;
+
+$spring-wood: #f8f5f0;
+
+$color-list: (
+  'dark-red': $dark-red,
+  'red': $red,
+  'light-red': $light-red,
+  'lighter-red': $lighter-red,
+  'dark-blue': $dark-blue,
+  'blue': $blue,
+  'light-blue': $light-blue,
+  'lighter-blue': $lighter-blue,
+  'dark-yellow': $dark-yellow,
+  'yellow': $yellow,
+  'light-yellow': $light-yellow,
+  'lighter-yellow': $lighter-yellow,
+  'black': $black,
+  'light-black': $light-black,
+  'lighter-black': $lighter-black,
+  'gray': $gray,
+  'quill-gray': $quill-gray,
+  'white': $white,
+  'spring-wood': $spring-wood,
+);
+
+$media-sm: 576px;
+$media-md: 768px;
+$media-lg: 992px;
+$media-xl: 1200px;

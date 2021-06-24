@@ -1,7 +1,15 @@
-@import './base/mixins';
-@import './base/variables';
+@import './abstracts/_variables';
+@import './abstracts/_mixins';
 
-@import './module/scaffolding';
-@import './module/layout';
-@import './module/spacing';
-@import './module/dynamic';
+@import './core/reset';
+@import './core/typography';
+@import './core/display';
+
+@import './layout/container';
+@import './layout/spacing';
+@import './layout/flex';
+
+// @import './module/scaffolding';
+// @import './module/layout';
+// @import './module/spacing';
+// @import './module/dynamic';
