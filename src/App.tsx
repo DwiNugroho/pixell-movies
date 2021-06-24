@@ -19,7 +19,7 @@ const App = () => (
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque iure
       nostrum aperiam, minima architecto inventore cupiditate in, ratione sequi,
       exercitationem ea atque? Repellendus ratione consequatur fugiat nam dolore
-      deserunt nisi?
+      deserunt nisi? learn react
     </p>
 
     <section className="flex flex--wrap">

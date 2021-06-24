@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ripple 1`] = `
+<DocumentFragment>
+  <button
+    class="atom-button atom-button--medium atom-button--primary   "
+    type="button"
+  >
+    <span
+      class="atom-button__ripple"
+      style="left: 0px; top: 0px;"
+    />
+    Text
+  </button>
+</DocumentFragment>
+`;
