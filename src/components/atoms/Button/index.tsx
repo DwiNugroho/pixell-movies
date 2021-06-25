@@ -3,43 +3,16 @@ import * as React from 'react';
 import './styles.scss';
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  /**
-   * Button contents
-   */
   children: React.ReactNode;
-  /**
-   * Optional click handler
-   */
   onClick?: () => void;
-  /**
-   *  Spans the full width of the Button parent
-   */
   block?: boolean;
-  /**
-   * A button can have different sizes
-   */
   size?: 'small' | 'medium' | 'large';
-  /**
-   *  A button can have different appearances
-   */
   appearance?: 'primary' | 'outline';
-  /**
-   * A button can have different colors
-   */
   color?: 'none' | 'red' | 'blue' | 'yellow';
-  /**
-   * A button can show it is currently unable to be interacted with
-   */
   disabled?: boolean;
-  /**
-   *  A button can have className atrribute
-   */
   className?: string;
 }
 
-/**
- * Reusable Button Component
- */
 export const Button: React.FC<Props> = ({
   children,
   onClick,
@@ -51,20 +24,6 @@ export const Button: React.FC<Props> = ({
   className,
   ...props
 }) => {
-  const [coords, setCoords] = React.useState({ x: -1, y: -1 });
-  const [isRippling, setIsRippling] = React.useState(false);
-
-  React.useEffect(() => {
-    if (coords.x !== -1 && coords.y !== -1) {
-      setIsRippling(true);
-      setTimeout(() => setIsRippling(false), 400);
-    } else setIsRippling(false);
-  }, [coords]);
-
-  React.useEffect(() => {
-    if (!isRippling) setCoords({ x: -1, y: -1 });
-  }, [isRippling]);
-
   const getSize =
     (size || '').toLocaleLowerCase() === 'large'
       ? 'atom-button--large'
@@ -86,33 +45,30 @@ export const Button: React.FC<Props> = ({
       ? 'atom-button--yellow'
       : '';
 
-  const isBlock = block ? 'atom-button--block' : '';
+  let classNameFinal = `atom-button ${getSize} ${getApperiance}`;
 
-  const haveClassName = className ? className : '';
+  if (getColor) {
+    classNameFinal += ` ${getColor}`;
+  }
+
+  if (block) {
+    classNameFinal += ' atom-button--block';
+  }
+
+  if (className) {
+    classNameFinal += ` ${className}`;
+  }
 
   return (
     <button
       type="button"
-      className={`atom-button ${getSize} ${getApperiance} ${getColor} ${isBlock} ${haveClassName}`}
-      onClick={(e) => {
-        const rect = (e.target as any).getBoundingClientRect();
-        setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+      className={classNameFinal}
+      onClick={() => {
         onClick && onClick();
       }}
       disabled={disabled}
       {...props}
     >
-      {isRippling ? (
-        <span
-          className="atom-button__ripple"
-          style={{
-            left: coords.x,
-            top: coords.y,
-          }}
-        />
-      ) : (
-        ''
-      )}
       {children}
     </button>
   );

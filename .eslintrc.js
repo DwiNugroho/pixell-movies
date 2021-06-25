@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:@typescript-eslint/recommended', 'airbnb-typescript'],
+  extends: ['plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -17,19 +17,15 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 0,
+    'react/prop-types': 0,
+    'react/jsx-props-no-spreading': 0,
+    'import/no-named-as-default': 0,
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: 'always',
-        ObjectPattern: { multiline: false },
-        ImportDeclaration: 'never',
-        ExportDeclaration: { multiline: false, minProperties: 3 },
-      },
-    ],
+    'object-curly-newline': 0,
   },
   settings: {
     'import/resolver': {

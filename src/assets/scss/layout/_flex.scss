@@ -99,9 +99,12 @@
 
 .flex {
   display: flex;
-  background-color: $blue;
-  margin: 0 0 0 -32px;
+  margin: -32px 0 0 -32px;
   width: calc(100% + 32px) !important;
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
   &- {
     @include flex-mixin();
   }
@@ -129,7 +132,7 @@
 
   &__item {
     margin: 32px 0 0 32px;
-    flex: 0 0 auto;
+    flex: 0 1 auto;
     &- {
       @include flex-item-mixin();
     }

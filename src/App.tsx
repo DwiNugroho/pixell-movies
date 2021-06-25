@@ -1,5 +1,9 @@
 import React from 'react';
-// import logo from './logo.svg';
+
+import Search from '@/components/molecules/Search';
+
+import Input from '@/components/atoms/Input';
+import Button from '@/components/atoms/Button';
 
 const App = () => (
   <section className="container">
@@ -22,19 +26,27 @@ const App = () => (
       deserunt nisi? learn react
     </p>
 
-    <section className="flex flex--wrap">
-      <div
-        className="flex__item flex__item--12 flex__item--lg-6 background--red"
-        style={{
-          minHeight: '100px',
-        }}
-      />
-      <div
-        className="flex__item flex__item--12 flex__item--lg-6 background--red"
-        style={{
-          minHeight: '100px',
-        }}
-      />
+    <section className="width--100">
+      <Search />
+    </section>
+
+    <section className="flex mt-1">
+      <section className="flex__item">
+        <Input />
+      </section>
+      <section className="flex__item">
+        <Button size="small" appearance="outline">
+          Text
+        </Button>
+      </section>
+      <section className="flex__item">
+        <Button size="medium" color="blue">
+          Text
+        </Button>
+      </section>
+      <section className="flex__item">
+        <Button size="large">Text</Button>
+      </section>
     </section>
   </section>
 );

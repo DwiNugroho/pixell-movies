@@ -104,11 +104,3 @@ test('Should call onClick callback', (done) => {
 
   ReactTestUtils.Simulate.click(button);
 });
-
-test('ripple effect after click', () => {
-  const { container } = render(<Button>Text</Button>);
-  const button = container.querySelector('button') || container;
-
-  fireEvent.click(button);
-  expect(button).toMatchSnapshot();
-});
