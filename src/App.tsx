@@ -14,7 +14,7 @@ const ScrollToTop = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  return null;
+  return <></>;
 };
 
 const App: React.FC = () => {

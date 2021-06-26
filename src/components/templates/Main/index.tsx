@@ -12,7 +12,7 @@ export const Search: React.FC<Props> = ({ children }) => {
   return (
     <section className="width--100">
       <Navbar />
-      <main style={{ minHeight: '380vh', marginTop: '76px' }}>{children}</main>
+      <main style={{ minHeight: '80vh', marginTop: '76px' }}>{children}</main>
     </section>
   );
 };
