@@ -9,9 +9,16 @@ export interface Props {
   className?: string;
   onSearch?: (value?: string) => void;
   onChange?: (value?: string) => void;
+  label?: string;
+  block?: boolean;
 }
 
-export const Search: React.FC<Props> = ({ onSearch, onChange }) => {
+export const Search: React.FC<Props> = ({
+  onSearch,
+  onChange,
+  label,
+  block,
+}) => {
   const [search, setSearch] = React.useState('');
 
   const searchHandler = () => {
@@ -30,16 +37,21 @@ export const Search: React.FC<Props> = ({ onSearch, onChange }) => {
         e.preventDefault();
         searchHandler();
       }}
-      className="width--100"
     >
-      <label htmlFor="search" className="cursor--pointer">
-        <h5>Search</h5>
-      </label>
-      <br />
+      {label ? (
+        <>
+          <label htmlFor="search" className="cursor--pointer">
+            <h5>{{ label }}</h5>
+          </label>
+          <br />
+        </>
+      ) : (
+        <></>
+      )}
       <section className="flex">
         <Input
           id="search"
-          className="flex__item width--100"
+          className={`flex__item${block ? ' width--100' : ''}`}
           placeholder="search.."
           value={search}
           onChange={(e) => {
@@ -47,7 +59,12 @@ export const Search: React.FC<Props> = ({ onSearch, onChange }) => {
             onChange && onChange(e.target.value);
           }}
         ></Input>
-        <Button type="submit" className="flex__item" color="red">
+        <Button
+          type="submit"
+          className="flex__item"
+          color="red"
+          style={{ margin: '32px 0 0 16px', minWidth: '92px' }}
+        >
           Search
         </Button>
       </section>
@@ -56,7 +73,7 @@ export const Search: React.FC<Props> = ({ onSearch, onChange }) => {
 };
 
 Search.defaultProps = {
-  // onPressEnter: undefined,
+  label: '',
 };
 
 export default Search;
