@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from '@/App';
 import store from './store';
+import axiosInterceptor from '@/plugins/axiosInterceptor';
 import reportWebVitals from './reportWebVitals';
 
 import '@/assets/scss/main.scss';
+
+axiosInterceptor();
 
 ReactDOM.render(
   <Provider store={store}>

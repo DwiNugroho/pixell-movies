@@ -2,7 +2,14 @@ import React from 'react';
 
 import Search from '@/components/molecules/Search';
 
-const HomePage: React.FC = () => {
+export interface Props {
+  getAllMovies: () => void;
+}
+
+const HomePage: React.FC<Props> = ({ getAllMovies }) => {
+  React.useEffect(() => {
+    getAllMovies();
+  });
   return (
     <section className="width--100">
       <section className="width--100 background--spring-wood py-5">
