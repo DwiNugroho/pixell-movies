@@ -1,8 +1,16 @@
 import React from 'react';
-import IRoute from '@/interfaces/route';
 
 // templates
 const MainTemplate = React.lazy(() => import('@/components/templates/Main'));
+
+export interface IRoute {
+  path: string;
+  name: string;
+  exact: boolean;
+  component: any;
+  template?: any;
+  props?: any;
+}
 
 const routes: IRoute[] = [
   {
