@@ -14,6 +14,10 @@ const HomePage: React.FC<RouteComponentProps> = ({ history }) => {
             className="flex__item width--100 px-3"
             style={{ marginTop: '-360px' }}
           >
+            <h1 className="text--center">Search Movie Here</h1>
+            <br />
+            <br />
+
             <Search
               onSearch={(value) => {
                 history.push(`/search?keyword=${value}`);

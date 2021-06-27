@@ -5,3 +5,9 @@ interface RefObject<T> {
   // immutable
   readonly current: T | null;
 }
+
+declare global {
+  interface Window {
+    IntersectionObserver: typeof IntersectionObserver;
+  }
+}
