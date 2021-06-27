@@ -4,6 +4,7 @@ import { IMovieList } from '@/store/movie/models';
 
 import Search from '@/components/molecules/Search';
 import MovieCard from '@/components/molecules/MovieCard';
+import ImagePreview from '@/components/molecules/ImagePreview';
 
 export interface Props extends RouteComponentProps {
   getAllMovies: (keyword: string) => Promise<any>;
@@ -18,6 +19,8 @@ const SearchPage: React.FC<Props> = ({
 }) => {
   const params = new URLSearchParams(location.search);
   const keyword = params.get('keyword') || '';
+
+  const [imgPreview, setImgPreview] = React.useState('');
 
   React.useEffect(() => {
     getAllMovies(keyword);
@@ -58,6 +61,9 @@ const SearchPage: React.FC<Props> = ({
                   title={item.Title}
                   type={item.Type}
                   year={item.Year}
+                  onPreview={(value) => {
+                    setImgPreview(value);
+                  }}
                 >
                   <Link
                     className="movie-card__link"
@@ -73,6 +79,7 @@ const SearchPage: React.FC<Props> = ({
           </section>
         )}
       </section>
+      <ImagePreview img={imgPreview} onHide={() => setImgPreview('')} />
     </section>
   );
 };

@@ -10,7 +10,7 @@
 .img-thumbnail {
   width: 100%;
   padding-top: calc(445 / 300 * 100%);
-  position: relative;
+  position: relative !important;
   display: block;
   overflow: hidden;
   border-radius: 4px;
@@ -23,7 +23,7 @@
     }
   }
   &__item {
-    position: absolute;
+    position: absolute !important;
     top: 0;
     right: 0;
     bottom: 0;

@@ -10,7 +10,7 @@ import './styles.scss';
 
 export const Navbar: React.FC<RouteComponentProps> = () => {
   return (
-    <section className="main-navbar width--100 background--spring-wood">
+    <section className="main-navbar width--100 background--white">
       <section className="container py-3">
         <nav
           className="flex flex--justify-space-between flex--align-center"
@@ -23,7 +23,7 @@ export const Navbar: React.FC<RouteComponentProps> = () => {
           </section>
         </nav>
       </section>
-      {/* <hr className="my-0" /> */}
+      <hr className="my-0" />
     </section>
   );
 };

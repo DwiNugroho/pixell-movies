@@ -3,6 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { IMovieDetail } from '@/store/movie/models';
 
 import MovieCard from '@/components/molecules/MovieCard';
+import ImagePreview from '@/components/molecules/ImagePreview';
 
 export interface Props extends RouteComponentProps<{ id: string }> {
   getDetailMovie: (id: string) => Promise<any>;
@@ -15,6 +16,8 @@ const DetailPage: React.FC<Props> = ({
   match,
 }) => {
   const { id } = match.params;
+
+  const [imgPreview, setImgPreview] = React.useState('');
 
   React.useEffect(() => {
     getDetailMovie(id || '');
@@ -32,24 +35,31 @@ const DetailPage: React.FC<Props> = ({
             className="flex__item flex__item--12 flex__item--lg-3"
             style={{ marginTop: '-20px' }}
           >
-            <MovieCard thumbnail={movieDetail.Poster}>
-              <p className="mb-0 text--lighter-black">
-                IMDB Rating:{' '}
-                <span className="text--blue">{movieDetail.imdbRating}</span>
-              </p>
-              <p className="mb-0 mt-2 text--lighter-black">
-                Release Year:{' '}
-                <span className="text--blue">{movieDetail.Year}</span>
-              </p>
-              <p className="mb-0 mt-2 text--lighter-black">
-                Director:{' '}
-                <span className="text--blue">{movieDetail.Director}</span>
-              </p>
-              <p className="mb-0 mt-2 text--lighter-black">
-                Box Office:{' '}
-                <span className="text--blue">{movieDetail.BoxOffice}</span>
-              </p>
-            </MovieCard>
+            <section className="position--lg-sticky" style={{ top: '100px' }}>
+              <MovieCard
+                thumbnail={movieDetail.Poster}
+                onPreview={(value) => {
+                  setImgPreview(value);
+                }}
+              >
+                <p className="mb-0 text--lighter-black">
+                  IMDB Rating:{' '}
+                  <span className="text--blue">{movieDetail.imdbRating}</span>
+                </p>
+                <p className="mb-0 mt-2 text--lighter-black">
+                  Release Year:{' '}
+                  <span className="text--blue">{movieDetail.Year}</span>
+                </p>
+                <p className="mb-0 mt-2 text--lighter-black">
+                  Director:{' '}
+                  <span className="text--blue">{movieDetail.Director}</span>
+                </p>
+                <p className="mb-0 mt-2 text--lighter-black">
+                  Box Office:{' '}
+                  <span className="text--blue">{movieDetail.BoxOffice}</span>
+                </p>
+              </MovieCard>
+            </section>
           </section>
           <div className="mx-2"></div>
           <section className="flex__item flex__item--12 flex__item--lg-9">
@@ -83,6 +93,7 @@ const DetailPage: React.FC<Props> = ({
           </section>
         </section>
       </section>
+      <ImagePreview img={imgPreview} onHide={() => setImgPreview('')} />
     </section>
   );
 };
