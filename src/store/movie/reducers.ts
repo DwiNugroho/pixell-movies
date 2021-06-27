@@ -1,13 +1,14 @@
 import { Action, Reducer } from 'redux';
-import { CHANGE_MOVIE_LIST_STATE, CHANGE_DETAIL_MOVIE } from './models';
+import { CHANGE_MOVIE_LIST_STATE, CHANGE_DETAIL_MOVIE, IMovie } from './models';
 
 export const defaultState = () => ({
   movieList: {
     s: '',
-    page: 1,
-    Search: [],
+    Page: '1',
+    Search: [] as IMovie[],
     Response: 'True',
-    totalResults: 0,
+    totalResults: '',
+    loading: true,
   },
   movieDetail: {
     Response: 'True',

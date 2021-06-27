@@ -5,9 +5,11 @@ import { IMovieList } from '@/store/movie/models';
 import Search from '@/components/molecules/Search';
 import MovieCard from '@/components/molecules/MovieCard';
 import ImagePreview from '@/components/molecules/ImagePreview';
+import LoadOnScroll from '@components/molecules/LoadOnScroll';
 
 export interface Props extends RouteComponentProps {
   getAllMovies: (keyword: string) => Promise<any>;
+  changeMovieListState: (payload: IMovieList) => void;
   movieList: IMovieList;
 }
 
@@ -15,16 +17,39 @@ const SearchPage: React.FC<Props> = ({
   history,
   location,
   getAllMovies,
+  changeMovieListState,
   movieList,
 }) => {
   const params = new URLSearchParams(location.search);
   const keyword = params.get('keyword') || '';
 
+  const [hashMore, setHashMore] = React.useState(false);
+
   const [imgPreview, setImgPreview] = React.useState('');
 
   React.useEffect(() => {
+    changeMovieListState({ Search: [] });
     getAllMovies(keyword);
   }, [keyword]);
+
+  const loadMore = () => {
+    // console.log((movieList.Search || [])?.length);
+    if (
+      movieList.Response === 'False' ||
+      (movieList.Search || []).length <= 0 ||
+      (movieList.Search || [])?.length >=
+        parseInt(movieList.totalResults || '0')
+    ) {
+      return;
+    }
+
+    const page = parseInt(movieList.Page || '0') + 1;
+
+    changeMovieListState({ Page: page.toString() });
+    getAllMovies(keyword).finally(() => {
+      setHashMore((movieList.Search || []).length > 0);
+    });
+  };
 
   return (
     <section className="width--100 pb-5 mb-5">
@@ -78,6 +103,17 @@ const SearchPage: React.FC<Props> = ({
             ))}
           </section>
         )}
+        <LoadOnScroll
+          loading={
+            movieList.loading ||
+            (movieList.Search || [])?.length >=
+              parseInt(movieList.totalResults || '0')
+          }
+          hashMore={hashMore}
+          onLoad={() => {
+            loadMore();
+          }}
+        />
       </section>
       <ImagePreview img={imgPreview} onHide={() => setImgPreview('')} />
     </section>

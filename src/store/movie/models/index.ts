@@ -11,9 +11,11 @@ export interface IMovie {
   imdbID?: string;
 }
 export interface IMovieList {
-  Response: string;
+  Response?: string;
   Search?: IMovie[];
-  totalResult?: number;
+  totalResults?: string;
+  Page?: string;
+  loading?: boolean;
 }
 
 export interface IRatings {

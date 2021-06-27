@@ -7,6 +7,8 @@ import {
   IMovieDetail,
 } from './models';
 
+import { RootState } from '../index';
+
 export const changeMovieListState = (payload: IMovieList) => ({
   type: CHANGE_MOVIE_LIST_STATE,
   payload,
@@ -17,16 +19,44 @@ export const changeDetailMovie = (payload: IMovieDetail) => ({
   payload,
 });
 
-export const getAllMovies = (keyword: string) => (dispatch: Dispatch) => {
+export const getAllMovies = (keyword: string) => (
+  dispatch: Dispatch,
+  getState: () => RootState,
+) => {
+  const { movieList } = getState().movie;
+
+  dispatch(changeMovieListState({ loading: true }));
   return new Promise((resolve, reject) => {
     axios
-      .get<IMovieList>(`/?s=${keyword}`)
+      .get<IMovieList>(`/?s=${keyword}&&page=${movieList.Page || '1'}`)
       .then((res) => {
-        dispatch(changeMovieListState(res.data));
-        resolve(res);
+        let data = { ...movieList };
+
+        if (res.data.Response === 'True') {
+          const Search = [
+            ...(movieList.Search || []),
+            ...(res.data.Search || []),
+          ];
+
+          data = {
+            ...movieList,
+            ...res.data,
+            Search,
+          };
+        } else {
+          data = {
+            ...movieList,
+            ...res.data,
+          };
+        }
+        dispatch(changeMovieListState(data));
+        resolve(data);
       })
       .catch((err) => {
         reject(err);
+      })
+      .finally(() => {
+        dispatch(changeMovieListState({ loading: false }));
       });
   });
 };
@@ -34,7 +64,7 @@ export const getAllMovies = (keyword: string) => (dispatch: Dispatch) => {
 export const getDetailMovie = (id: string) => (dispatch: Dispatch) => {
   return new Promise((resolve, reject) => {
     axios
-      .get<IMovieDetail>(`/?i=${id}`)
+      .get<IMovieDetail>(`/?i=${id}&&plot=full`)
       .then((res) => {
         dispatch(changeDetailMovie(res.data));
         resolve(res);
