@@ -111,6 +111,11 @@ To get a local copy up and running follow these simple steps.
       },
     );
    ```
+   
+### How to run the Test Driven
+   ```sh
+   npm run test
+   ```
 
 
 <!-- CONTACT -->
