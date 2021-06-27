@@ -21,14 +21,14 @@ const routes: IRoute[] = [
     template: MainTemplate,
   },
   {
-    path: '/search/:keyword',
+    path: '/search',
     name: 'SearchPage',
     exact: true,
     component: React.lazy(() => import('@/pages/search')),
     template: MainTemplate,
   },
   {
-    path: '/movie/:slug',
+    path: '/movie/:id',
     name: 'HomePage',
     exact: true,
     component: React.lazy(() => import('@/pages/detail')),

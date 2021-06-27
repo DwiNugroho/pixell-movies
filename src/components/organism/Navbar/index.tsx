@@ -6,13 +6,11 @@ import {
   RouteComponentProps,
 } from 'react-router-dom';
 
-import Search from '@/components/molecules/Search';
-
 import './styles.scss';
 
-export const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
+export const Navbar: React.FC<RouteComponentProps> = () => {
   return (
-    <section className="main-navbar width--100 background--white">
+    <section className="main-navbar width--100 background--spring-wood">
       <section className="container py-3">
         <nav
           className="flex flex--justify-space-between flex--align-center"
@@ -22,26 +20,10 @@ export const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
             <Link to="/" className="text--black">
               <h3 className="my-0">PixellMovie</h3>
             </Link>
-            {/* <section className="ml-5">
-              <NavLink
-                to="/movies"
-                className="text--light-black"
-                activeClassName="text--dark-yellow"
-              >
-                <p className="my-0">Movie List</p>
-              </NavLink>
-            </section> */}
-          </section>
-          <section className="flex__item display--invisible display--md-visible">
-            <Search
-              onSearch={(value) => {
-                history.push(`/search/${value}`);
-              }}
-            />
           </section>
         </nav>
       </section>
-      <hr className="my-0" />
+      {/* <hr className="my-0" /> */}
     </section>
   );
 };

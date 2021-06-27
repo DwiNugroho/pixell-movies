@@ -110,7 +110,7 @@
   }
 
   &--sm {
-    @include breakpoint-up(md) {
+    @include breakpoint-up(sm) {
       @include flex-mixin();
     }
   }
@@ -120,12 +120,12 @@
     }
   }
   &--lg {
-    @include breakpoint-up(md) {
+    @include breakpoint-up(lg) {
       @include flex-mixin();
     }
   }
   &--xl {
-    @include breakpoint-up(md) {
+    @include breakpoint-up(xl) {
       @include flex-mixin();
     }
   }
@@ -143,17 +143,17 @@
       }
     }
     &--md {
-      @include breakpoint-up(sm) {
+      @include breakpoint-up(md) {
         @include flex-item-mixin();
       }
     }
     &--lg {
-      @include breakpoint-up(sm) {
+      @include breakpoint-up(lg) {
         @include flex-item-mixin();
       }
     }
     &--xl {
-      @include breakpoint-up(sm) {
+      @include breakpoint-up(xl) {
         @include flex-item-mixin();
       }
     }

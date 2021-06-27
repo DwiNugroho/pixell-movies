@@ -11,6 +11,7 @@ export interface Props {
   onChange?: (value?: string) => void;
   label?: string;
   block?: boolean;
+  value?: string;
 }
 
 export const Search: React.FC<Props> = ({
@@ -18,8 +19,9 @@ export const Search: React.FC<Props> = ({
   onChange,
   label,
   block,
+  value,
 }) => {
-  const [search, setSearch] = React.useState('');
+  const [search, setSearch] = React.useState(value);
 
   const searchHandler = () => {
     if (!search) {
@@ -74,6 +76,7 @@ export const Search: React.FC<Props> = ({
 
 Search.defaultProps = {
   label: '',
+  value: '',
 };
 
 export default Search;

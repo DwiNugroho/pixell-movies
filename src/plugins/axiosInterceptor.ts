@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 export default () => {
-  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
+  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL || '';
 
   axios.interceptors.request.use(
     (config) => {
       let params = {
-        apikey: process.env.REACT_APP_API_KEY,
+        apikey: process.env.REACT_APP_API_KEY || '',
+        type: 'movie',
       };
 
       if (config.params) {
