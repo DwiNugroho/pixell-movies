@@ -1,9 +1,5 @@
 .container,
-.container-fluid,
-.container-sm,
-.container-md,
-.container-lg,
-.container-xl {
+.container-fluid {
   width: 100%;
   padding-right: 16px;
   padding-left: 16px;
@@ -12,35 +8,25 @@
 }
 
 @include breakpoint-up(sm) {
-  .container,
-  .container-sm {
+  .container {
     max-width: 540px;
   }
 }
 
 @include breakpoint-up(md) {
-  .container,
-  .container-sm,
-  .container-md {
+  .container {
     max-width: 720px;
   }
 }
 
 @include breakpoint-up(lg) {
-  .container,
-  .container-sm,
-  .container-md,
-  .container-lg {
+  .container {
     max-width: 960px;
   }
 }
 
 @include breakpoint-up(xl) {
-  .container,
-  .container-sm,
-  .container-md,
-  .container-lg,
-  .container-xl {
+  .container {
     max-width: 1140px;
   }
 }

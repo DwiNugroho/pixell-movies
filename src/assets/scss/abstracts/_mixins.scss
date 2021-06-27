@@ -55,3 +55,15 @@
 // .text--green {
 //   color: $green;
 // }
+
+@include create-class-by-color('text', 'color');
+@include create-class-by-color('background', 'background-color');
+
+.width {
+  @for $i from 0 through 20 {
+    $size: 5 * $i;
+    &--#{$size} {
+      width: $size * 1%;
+    }
+  }
+}

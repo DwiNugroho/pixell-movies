@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid $quill-gray;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.cursor {
+  &--pointer {
+    cursor: pointer;
+  }
+}

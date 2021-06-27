@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux';
+import App from '@/App';
+import store from './store';
+import axiosInterceptor from '@/plugins/axiosInterceptor';
 import reportWebVitals from './reportWebVitals';
+
 import '@/assets/scss/main.scss';
 
+axiosInterceptor();
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
