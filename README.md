@@ -78,7 +78,7 @@ To get a local copy up and running follow these simple steps.
    REACT_APP_API_BASE_URL=http://www.omdbapi.com/
    REACT_APP_API_KEY=your_api_key
    ```
-5. If you don't want to use env you can hardcode your api key to /src/plugins/axiosInterceptor.ts file as below. (Optional)
+5. If you don't want to use env you can hardcode your api key in `/src/plugins/axiosInterceptor.ts` file as below. (Optional)
     ```ts
     // your base url api
    axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL || 'http://www.omdbapi.com/';
