@@ -101,6 +101,34 @@ const SearchPage: React.FC<Props> = ({
                 </MovieCard>
               </section>
             ))}
+
+            {movieList.loading ? (
+              Array.from(Array(10), (item, index) => (
+                <section
+                  key={index}
+                  className="flex__item flex__item--12 flex__item--md-6 flex__item--xl-4"
+                >
+                  <div
+                    className="width--100 skeleton"
+                    style={{ minHeight: '400px' }}
+                  ></div>
+                  <div
+                    className="width--75 skeleton mt-3"
+                    style={{ minHeight: '32px' }}
+                  ></div>
+                  <div
+                    className="width--45 skeleton mt-3"
+                    style={{ minHeight: '32px' }}
+                  ></div>
+                  <div
+                    className="width--55 skeleton mt-3"
+                    style={{ minHeight: '32px' }}
+                  ></div>
+                </section>
+              ))
+            ) : (
+              <></>
+            )}
           </section>
         )}
         <LoadOnScroll
